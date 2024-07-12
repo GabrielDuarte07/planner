@@ -13,6 +13,7 @@ type Variants = "primary" | "secondary";
 type ButtonProps = TouchableOpacityProps & {
   variant?: Variants;
   isLoading?: boolean;
+  className?: string;
 };
 
 const ThemeButtonContext = React.createContext<{ variant?: Variants }>({});
@@ -20,6 +21,7 @@ const ThemeButtonContext = React.createContext<{ variant?: Variants }>({});
 const Button = ({
   variant = "primary",
   isLoading = false,
+  className,
   children,
   ...rest
 }: ButtonProps): React.JSX.Element => {
@@ -31,6 +33,7 @@ const Button = ({
           "bg-lime-300": variant === "primary",
           "bg-zinc-800": variant === "secondary",
         },
+        className,
       )}
       activeOpacity={0.7}
       disabled={isLoading}
